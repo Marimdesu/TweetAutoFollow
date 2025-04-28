@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ロジッククエスト・ウルトラ</title>
+
+    <!-- ===== Global Styles ===== -->
+    <link rel="stylesheet" href="style.css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+
+    <!-- ===== Libraries (defer) ===== -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js" defer></script>
+
+    <!-- ===== Game Logic ===== -->
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <!-- 背景キャンバス: 星屑アニメ -->
+    <canvas id="starfield"></canvas>
+
+    <!-- =============================== -->
+    <!--          ホーム カード           -->
+    <!-- =============================== -->
+    <main class="card" id="home-card">
+      <h1 class="site-title fade-up">ロジッククエスト・ウルトラ</h1>
+      <p  class="tagline    fade-up">論理と思考の頂点へ</p>
+      <button class="btn      fade-up" id="play-btn">▶ ゲーム開始</button>
+    </main>
+
+    <!-- =============================== -->
+    <!--          ゲーム カード          -->
+    <!-- =============================== -->
+    <main class="card hidden" id="game-card">
+      <!-- 左上: ホームへ戻る / 右上: 難易度メニュー -->
+      <button id="back-btn" title="ホーム" aria-label="ホームへ戻る"><i class="fa-solid fa-arrow-left"></i></button>
+      <button id="menu-btn" title="難易度選択" aria-label="難易度メニュー"><i class="fa-solid fa-arrow-up-right-from-square"></i></button>
+
+      <h2 class="section-title" id="current-difficulty">難易度を選んでください</h2>
+
+      <!-- ── 難易度選択 ── -->
+      <div id="difficulty-selection" class="fade-up">
+        <button class="btn diff-btn beginner"     data-level="beginner">初心者</button>
+        <button class="btn diff-btn intermediate" data-level="intermediate">中級者</button>
+        <button class="btn diff-btn advanced"     data-level="advanced">上級者</button>
+        <button class="btn diff-btn supreme"      data-level="supreme">至高</button>
+        <button class="btn diff-btn shigoku"      data-level="shigoku">至極</button>
+      </div>
+
+      <!-- ── 問題表示 ── -->
+      <section id="question-section" class="hidden">
+        <h3 class="condition" id="condition"></h3>
+        <ul  id="statements" class="statement-list"></ul>
+        <div id="choices"    class="choices"></div>
+        <button class="btn" id="submit-btn">回答する</button>
+      </section>
+
+      <!-- ── 結果表示 ── -->
+      <section id="result-section" class="hidden">
+        <h2 id="result-message" class="result-message"></h2>
+        <p  id="correct-answer" class="answer-text"></p>
+        <p  id="explanation"    class="explanation-text"></p>
+        <button class="btn" id="next-btn">次の問題へ</button>
+      </section>
+    </main>
+  </body>
+</html>
